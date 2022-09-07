@@ -16,7 +16,7 @@ class PostController extends Controller
     {
         //
         $getAll = Post::latest()->get();
-        return view ('dashboard',['posts' => $getAll]);
+        return view ('dashboard');
     }
 
     /**
