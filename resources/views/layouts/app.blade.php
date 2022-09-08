@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -33,36 +33,42 @@
                 {{ $slot }}
             </main>
         </div>
-
-        @livewireScripts
-        <script type="text/javascript">
-            window.onscroll = function (ev) {
-                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-                    window.livewire.emit('load-more');
-                }
-            };
-        </script>
         <script src="{{asset('assets/js/jquery.min.js')}}"></script>
         <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
-        <script>
-          
-            $('.owl-carousel').owlCarousel({
-                    loop:true,
-                    margin:10,
-                    nav:false,
-                    dots:false,
-                    responsive:{
-                        0:{
-                            items:1
-                        },
-                        600:{
-                            items:3
-                        },
-                        1000:{
-                            items:1
-                        }
+        @livewireScripts
+        <script type="text/javascript">
+                  window.onscroll = function (ev) {
+                    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                        window.livewire.emit('load-more');
                     }
-                })
+            };
+        </script>
+        <script>
+           
+          document.addEventListener('livewire:load', function () {
+            window.livewire.hook('afterDomUpdate', () => {
+                // owl carousel init code here
+                            $('.owl-carousel').owlCarousel({
+                                        loop:true,
+                                        margin:10,
+                                        nav:false,
+                                        dots:false,
+                                        responsive:{
+                                            0:{
+                                                items:1
+                                            },
+                                            600:{
+                                                items:3
+                                            },
+                                            1000:{
+                                                items:1
+                                            }
+                                        }
+                                    })
+                        });
+                    });
+          
         </script>   
+        
     </body>
 </html>

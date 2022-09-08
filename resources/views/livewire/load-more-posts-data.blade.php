@@ -12,23 +12,26 @@
                 </div>
             </div>
         {{-- images carousel --}}
-            <div class="owl-carousel owl-theme">
-                <div class="item h-54">
-                    <img src="{{asset('images/empty.jpg')}}" alt="" class="h-54">
-                </div>
-                <div class="item h-54">
-                    <img src="{{asset('images/empty.jpg')}}" alt="" class="h-54">
-                </div>
-                <div class="item h-54">
-                    <img src="{{asset('images/empty.jpg')}}" alt="" class="h-54">
-                </div>
+        <div class="item h-54">
+            <img src="{{asset('images/empty.jpg')}}" alt="" class="h-54">
+        </div>
+        {{-- <div class="owl-carousel owl-theme">
+          
+            <div class="item h-54">
+                <img src="{{asset('images/empty.jpg')}}" alt="" class="h-54">
             </div>
+            <div class="item h-54">
+                <img src="{{asset('images/empty.jpg')}}" alt="" class="h-54">
+            </div>
+        </div> --}}
+        
+
             <div class="p-5">
                 <div class="flex justify-between">
                     <a href="#">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{$post->name}}</h5>
                     </a>
-                    <p>price:<em>{{$post->price}}</em></p>
+                    <p>price:<em>{{number_format($post->price,2, '.', '')}}</em></p>
                 </div>
                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
                     {{$post->description}}
